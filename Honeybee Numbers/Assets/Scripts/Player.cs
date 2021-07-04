@@ -29,8 +29,8 @@ public class Player : MonoBehaviour
             }
             else
             {
-                //rb.AddForce(new Vector2(1,0), ForceMode2D.Impulse);
-                rb.MovePosition(Vector2.zero);
+                rb.AddForce(new Vector2(1,0), ForceMode2D.Impulse);
+                //rb.MovePosition(Vector2.zero);
             }
             
         }

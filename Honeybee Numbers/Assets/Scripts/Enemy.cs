@@ -18,7 +18,10 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        StartCoroutine(DestroyObject());
+
+        if (collision.contacts[0].normal.y > 0.5f) {
+            StartCoroutine(DestroyObject());
+        }
 
     }
 

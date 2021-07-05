@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Test : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     private ParticleSystem particle;
     private SpriteRenderer sr;
@@ -17,10 +17,8 @@ public class Test : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-        
+
         StartCoroutine(DestroyObject());
-        //Destroy(gameObject);
 
     }
 

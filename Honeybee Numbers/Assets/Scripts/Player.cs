@@ -22,19 +22,12 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         movement = Input.GetAxis("Horizontal");
-        if (movement !=0)
+        if (movement != 0)
         {
-            if (gameObject.tag == "Player") {
-                transform.position = new Vector2(movement * 5, transform.position.y);
-            }
-            else
-            {
-                rb.AddForce(new Vector2(1,0), ForceMode2D.Impulse);
-                //rb.MovePosition(Vector2.zero);
-            }
-            
+
+            transform.position = new Vector2(movement * 5, transform.position.y);
         }
-         
+
+    }         
         
-    }
-}
+ }

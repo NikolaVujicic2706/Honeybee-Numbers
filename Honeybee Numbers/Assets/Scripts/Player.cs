@@ -6,9 +6,10 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
-    private float movement;
+    private float horizontalPosition;
     public Rigidbody2D rb;
     private int number;
+    public float speed = 10f;
     //public Transform movePlayer;
     // Start is called before the first frame update
     void Start()
@@ -21,11 +22,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        movement = Input.GetAxis("Horizontal");
-        if (movement != 0)
+        horizontalPosition = Input.GetAxis("Horizontal");
+        if (horizontalPosition != 0)
         {
 
-            transform.position = new Vector2(movement * 5, transform.position.y);
+            Vector2 movement = new Vector2(horizontalPosition, 0);
+            rb.MovePosition( rb.position + movement * speed *Time.deltaTime);
+            Debug.Log(Time.deltaTime);
         }
 
     }         

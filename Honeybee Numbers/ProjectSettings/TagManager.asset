@@ -10,7 +10,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Numbers
+  - 
   - Water
   - UI
   - 
@@ -40,7 +40,7 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Numbers
+  - name: Enemy
     uniqueID: 1591972539
     locked: 0
   - name: Default

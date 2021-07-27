@@ -22,19 +22,15 @@ public class Player : MonoBehaviour
 
     // Update is called once per frame
 
-    private void Update()
-    {
-        transform.position = new Vector2(Mathf.Clamp(transform.position.x, -screenBoundary, screenBoundary), transform.position.y);
-
-    }
-    void FixedUpdate()
+       void FixedUpdate()
     {
         horizontalPosition = Input.GetAxis("Horizontal");
         if (horizontalPosition != 0)
         {
 
-            Vector2 movement = new Vector2(horizontalPosition, 0);
-            rb.MovePosition( rb.position + movement * speed * Time.deltaTime);
+            Vector2 newPosition = rb.position + Vector2.right * horizontalPosition * speed * Time.fixedDeltaTime;
+            newPosition.x = Mathf.Clamp(newPosition.x, -screenBoundary, screenBoundary);
+            rb.MovePosition( newPosition);
                         
         }
 

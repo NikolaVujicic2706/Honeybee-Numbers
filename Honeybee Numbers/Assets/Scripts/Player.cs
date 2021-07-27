@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     private int number;
     public float speed = 10f;
+    private float screenBoundary = 14.6f;
     //public Transform movePlayer;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,12 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
+
+    private void Update()
+    {
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x, -screenBoundary, screenBoundary), transform.position.y);
+
+    }
     void FixedUpdate()
     {
         horizontalPosition = Input.GetAxis("Horizontal");
@@ -27,8 +34,8 @@ public class Player : MonoBehaviour
         {
 
             Vector2 movement = new Vector2(horizontalPosition, 0);
-            rb.MovePosition( rb.position + movement * speed *Time.deltaTime);
-            Debug.Log(Time.deltaTime);
+            rb.MovePosition( rb.position + movement * speed * Time.deltaTime);
+                        
         }
 
     }         

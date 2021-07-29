@@ -7,13 +7,15 @@ public class Enemy : MonoBehaviour
 {
     private ParticleSystem particle;
     private SpriteRenderer sr;
-    private TextMeshProUGUI textMP;
+    public TextMeshProUGUI textMP;
+    public int number;
 
     private void Awake()
     {
         particle = GetComponentInChildren<ParticleSystem>();
         sr = GetComponent<SpriteRenderer>();
         textMP = GetComponentInChildren<TextMeshProUGUI>();
+        number = Random.Range(2,10);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

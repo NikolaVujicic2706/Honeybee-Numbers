@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     private int number;
     public float speed = 10f;
     private float screenBoundary = 14.6f;
-    //public Transform movePlayer;
     // Start is called before the first frame update
     void Start()
     {

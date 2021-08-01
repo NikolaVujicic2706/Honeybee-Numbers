@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer sr;
     public TextMeshProUGUI textMP;
     public int number;
-    public float destroyBoundary = -6f;
+    public float destroyBoundary = -6.0f;
 
     private void Awake()
     {

@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer sr;
     public TextMeshProUGUI textMP;
     public int number;
+    public float destroyBoundary = -6f;
 
     private void Awake()
     {
@@ -16,6 +17,14 @@ public class Enemy : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         textMP = GetComponentInChildren<TextMeshProUGUI>();
         number = Random.Range(2,10);
+    }
+
+    private void Update()
+    {
+        if (transform.position.y < destroyBoundary)
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

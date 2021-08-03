@@ -7,13 +7,15 @@ public class Enemy : MonoBehaviour
 {
     private ParticleSystem particle;
     private SpriteRenderer sr;
+    private Rigidbody2D rb;
     public TextMeshProUGUI textMP;
     public int number;
-    public float destroyBoundary = -6.0f;
+    public float destroyBoundary = -15.0f;
 
     private void Awake()
     {
         particle = GetComponentInChildren<ParticleSystem>();
+        rb = GetComponent < Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         textMP = GetComponentInChildren<TextMeshProUGUI>();
         number = Random.Range(2,10);
@@ -29,11 +31,15 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-
-        if (collision.contacts[0].normal.y > 0.5f) {
+        if (collision.contacts[0].normal.x == 0) {
             StartCoroutine(DestroyObject());
         }
+        else
+        {
+            Physics2D.IgnoreCollision(collision.collider, collision.otherCollider);
+        }
 
+           
     }
 
     IEnumerator DestroyObject()

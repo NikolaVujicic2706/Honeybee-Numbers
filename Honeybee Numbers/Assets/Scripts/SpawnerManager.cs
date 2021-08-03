@@ -8,7 +8,7 @@ public class SpawnerManager : MonoBehaviour
     public Transform[] spawnPoints;
     public GameObject EnemyPrefab;
     private float timeToSpawn = 2f;
-    private float timeBetweenSpawns = 2f;
+    private float timeBetweenSpawns = 4f;
     public TextMeshProUGUI textMP;
     private Color randomColor;
 

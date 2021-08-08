@@ -33,7 +33,7 @@ public class SpawnerManager : MonoBehaviour
     // Update is called once per frame
     void SpawnEnemies()
     {
-        int randomIndex = Random.Range(0, spawnPoints.Length);
+        int randomIndex = Random.Range(0, 9);
 
         for (int i = 0; i < spawnPoints.Length; i++)
         {

@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     private int number;
     public float speed = 10f;
-    private float screenBoundary = 14.6f;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +27,6 @@ public class Player : MonoBehaviour
         {
 
             Vector2 newPosition = rb.position + Vector2.right * horizontalPosition * speed * Time.fixedDeltaTime;
-            newPosition.x = Mathf.Clamp(newPosition.x, -screenBoundary, screenBoundary);
             rb.MovePosition( newPosition);
                         
         }

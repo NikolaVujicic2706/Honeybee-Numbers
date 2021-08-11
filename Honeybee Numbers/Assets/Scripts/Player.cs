@@ -22,6 +22,15 @@ public class Player : MonoBehaviour
 
        void FixedUpdate()
     {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Moved)
+            {
+                print("Prst se pomera");
+            }
+        }
+        
         horizontalPosition = Input.GetAxis("Horizontal");
         if (horizontalPosition != 0)
         {

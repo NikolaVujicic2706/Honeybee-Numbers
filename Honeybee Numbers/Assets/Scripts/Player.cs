@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         number = Random.Range(2, 10);
-        speed = 1000f;
+        speed = 30f;
         GetComponentInChildren<TextMeshProUGUI>().text = number.ToString();
     }
 

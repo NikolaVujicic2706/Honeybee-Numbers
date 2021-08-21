@@ -21,8 +21,6 @@ public class Player : MonoBehaviour
     }
     
 
-    //public float Speed { get; set; }
-
     // Start is called before the first frame update
     void Awake()
     {

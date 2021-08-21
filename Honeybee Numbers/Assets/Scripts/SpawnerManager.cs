@@ -5,12 +5,14 @@ using TMPro;
 
 public class SpawnerManager : MonoBehaviour
 {
+    
+    private float timeToSpawn = 1f;
+    private float timeBetweenSpawns = 4f;
+    private Color randomColor;
+    public TextMeshProUGUI textMP;
     public Transform[] spawnPoints;
     public GameObject EnemyPrefab;
-    private float timeToSpawn = 2f;
-    private float timeBetweenSpawns = 4f;
-    public TextMeshProUGUI textMP;
-    private Color randomColor;
+   
 
 
     private void Awake()

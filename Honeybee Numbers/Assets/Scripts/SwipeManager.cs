@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SwipeManager : MonoBehaviour
 {
-    public Player player;
+    
    
     private Vector3 fp;   //First touch position
     private Vector3 lp;   //Last touch position
@@ -12,18 +12,16 @@ public class SwipeManager : MonoBehaviour
     private float swipeDuration;
     private float swipeStartTime;
     private float swipeEndTime;
-    //private float moveDuration;
+    private float swipeDistance;
     private enum Direction {right, left};
+    public Player player;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        dragDistance = Screen.height * 15 / 100; //dragDistance is 15% height of the screen
-        swipeStartTime = 0f;
-        swipeEndTime = 0f;
-        //moveDuration = 0f;
-        
+        dragDistance = Screen.height * 3 / 100; //dragDistance is 3% height of the screen
+            
     }
 
     private void Update()
@@ -45,23 +43,25 @@ public class SwipeManager : MonoBehaviour
             {
                 swipeEndTime = Time.time;
                 lp = touch.position;  //last touch position.
+                swipeDistance = Mathf.Abs(lp.x - fp.x);
 
                 //Check if drag distance is greater than 15% of the screen height
-                if (Mathf.Abs(lp.x - fp.x) > dragDistance)
+                if (swipeDistance > dragDistance)
                 {//It's a drag
 
                     swipeDuration = swipeEndTime - swipeStartTime;
+                   
                     
                       //If the horizontal movement is greater than the vertical movement...
                         if ((lp.x > fp.x))  //If the movement was to the right)
                         {   //Right swipe
                             //transform.position = Vector3.Lerp(transform.position, transform.position + player.Speed * Vector3.right * Time.deltaTime, moveDuration/swipeDuration);
-                            StartCoroutine(MovePlayer(Direction.right,swipeDuration));
-                        }
+                            StartCoroutine(MovePlayer(Direction.right,swipeDuration,swipeDistance));
+                                                }
                         else
                         {   //Left swipe
                             //transform.position = Vector3.Lerp(transform.position, transform.position + player.Speed * Vector3.left * Time.deltaTime, moveDuration/swipeDuration);
-                            StartCoroutine(MovePlayer(Direction.left, swipeDuration));
+                            StartCoroutine(MovePlayer(Direction.left, swipeDuration,swipeDistance));
                         }
 
                                          
@@ -71,7 +71,7 @@ public class SwipeManager : MonoBehaviour
         }
     }
 
-    IEnumerator MovePlayer(Direction direction, float swipeDuration)
+    IEnumerator MovePlayer(Direction direction, float swipeDuration, float swipeDistance)
     {
         float moveDuration = 0f;
 
@@ -81,15 +81,15 @@ public class SwipeManager : MonoBehaviour
 
             if (direction == Direction.right)
             {
-                transform.position = Vector3.Lerp(transform.position, transform.position + player.Speed * Vector3.right * Time.deltaTime, moveDuration / swipeDuration);
+                transform.position = Vector3.Lerp(transform.position, transform.position + player.Speed * Vector3.right * Time.deltaTime * swipeDistance/250, moveDuration / swipeDuration);
             }
             else
             {
-                transform.position = Vector3.Lerp(transform.position, transform.position - player.Speed * Vector3.right * Time.deltaTime, moveDuration / swipeDuration);
+                transform.position = Vector3.Lerp(transform.position, transform.position - player.Speed * Vector3.right * Time.deltaTime * swipeDistance/250, moveDuration / swipeDuration);
             }
             yield return null;
         }
-
+        
 
     }
 }

@@ -45,7 +45,7 @@ public class SwipeManager : MonoBehaviour
                 lp = touch.position;  //last touch position.
                 swipeDistance = Mathf.Abs(lp.x - fp.x);
 
-                //Check if drag distance is greater than 15% of the screen height
+                //Check if drag distance is greater than 3% of the screen height
                 if (swipeDistance > dragDistance)
                 {//It's a drag
 

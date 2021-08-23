@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
         tr = GetComponent<TrailRenderer>();
         ChangePlayerColor();
         rb = GetComponent<Rigidbody2D>();
-        number = Random.Range(2, 10);
+        number = Random.Range(2, 9);
         speed = 30f;
         GetComponentInChildren<TextMeshProUGUI>().text = number.ToString();
         

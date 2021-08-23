@@ -9,6 +9,9 @@ public class SpawnerManager : MonoBehaviour
     private float timeToSpawn = 1f;
     private float timeBetweenSpawns = 4f;
     private Color randomColor;
+    private readonly int[] muliplicationNumbers = {4,6,8,9,10,12,14,15,18,20,
+                                                  21,24,25,27,28,30,32,35,36,40,
+                                                  42,45,48,49,54,56,63,64,72,81};
     public TextMeshProUGUI textMP;
     public Transform[] spawnPoints;
     public GameObject EnemyPrefab;
@@ -19,6 +22,7 @@ public class SpawnerManager : MonoBehaviour
 
     {
         textMP = EnemyPrefab.GetComponentInChildren<TextMeshProUGUI>();
+        
     }
     // Start is called before the first frame update
     void Update()
@@ -47,10 +51,17 @@ public class SpawnerManager : MonoBehaviour
                                      Random.Range(0f, 1f),//Blue
                                      1 //Alpha (transparency)
                                      );
-                textMP.text = Random.Range(2, 10).ToString();
+                //textMP.text = Random.Range(2, 10).ToString();
+                textMP.text = GenerateRandomNumber(muliplicationNumbers).ToString();
                 GameObject spawnedEnemy = Instantiate(EnemyPrefab, spawnPoints[i].position, Quaternion.identity);
                 spawnedEnemy.GetComponent<SpriteRenderer>().material.SetColor("_Color", randomColor);
             }
         }
+    }
+
+    private int GenerateRandomNumber(int[] numbers)
+    {
+        int randomNumber = Random.Range(0, numbers.Length);
+        return numbers[randomNumber];
     }
 }

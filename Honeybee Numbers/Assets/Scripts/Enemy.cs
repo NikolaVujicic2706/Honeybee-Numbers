@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
     private ParticleSystem particle;
     private SpriteRenderer sr;
     public TextMeshProUGUI textMP;
-    public int number;
     public float destroyBoundary = -15.0f;
 
     private void Awake()
@@ -16,7 +15,6 @@ public class Enemy : MonoBehaviour
         particle = GetComponentInChildren<ParticleSystem>();
         sr = GetComponent<SpriteRenderer>();
         textMP = GetComponentInChildren<TextMeshProUGUI>();
-        number = Random.Range(2,10);
     }
 
     private void Update()

@@ -6,7 +6,7 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
-    private float timeBetweenColorChange = 3f;
+    private float timeBetweenColorChange = 6f;
     private int colorChanges;
     private int number;
     private float speed;
@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer sr;
     private Color randomColor;
     public Rigidbody2D rb;
+    public TextMeshProUGUI textMP;
 
 
     public float Speed
@@ -31,11 +32,12 @@ public class Player : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         tr = GetComponent<TrailRenderer>();
-        ChangePlayerColor();
+        textMP = GetComponentInChildren<TextMeshProUGUI>();
+        ChangePlayer();
         rb = GetComponent<Rigidbody2D>();
         number = Random.Range(2, 9);
         speed = 30f;
-        GetComponentInChildren<TextMeshProUGUI>().text = number.ToString();
+        textMP.text = number.ToString();
         
 
         
@@ -46,12 +48,12 @@ public class Player : MonoBehaviour
        
         if (Time.time > timeBetweenColorChange * colorChanges)
         {
-            ChangePlayerColor();
+            ChangePlayer();
             
         }
     }
 
-    private void ChangePlayerColor()
+    private void ChangePlayer()
     {
         randomColor = new Color(
                                     Random.Range(0f, 1f), //Red
@@ -61,7 +63,8 @@ public class Player : MonoBehaviour
                                     );
         this.sr.material.SetColor("_Color", randomColor);
         this.tr.material.SetColor("_Color", randomColor);
-
+        number = Random.Range(2, 9);
+        textMP.text = number.ToString();
         colorChanges++;
     }
 }

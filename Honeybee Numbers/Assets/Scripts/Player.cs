@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
 {
     private float timeBetweenColorChange = 6f;
     private int colorChanges;
-    private int number;
+    private int numberOne;
+    private int numberTwo;
     private float speed;
     private TrailRenderer tr;
     private SpriteRenderer sr;
@@ -35,9 +36,10 @@ public class Player : MonoBehaviour
         textMP = GetComponentInChildren<TextMeshProUGUI>();
         ChangePlayer();
         rb = GetComponent<Rigidbody2D>();
-        number = Random.Range(2, 9);
+        numberOne = Random.Range(2, 9);
+        numberTwo = Random.Range(2, 9);
         speed = 30f;
-        textMP.text = number.ToString();
+        textMP.text = numberOne.ToString() + "x" + numberTwo.ToString();
         
 
         
@@ -63,8 +65,9 @@ public class Player : MonoBehaviour
                                     );
         this.sr.material.SetColor("_Color", randomColor);
         this.tr.material.SetColor("_Color", randomColor);
-        number = Random.Range(2, 9);
-        textMP.text = number.ToString();
+        numberOne = Random.Range(2, 9);
+        numberTwo = Random.Range(2, 9);
+        textMP.text = numberOne.ToString() + "x" + numberTwo.ToString();
         colorChanges++;
     }
 }

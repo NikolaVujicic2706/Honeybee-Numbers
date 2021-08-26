@@ -7,7 +7,7 @@ public class SpawnerManager : MonoBehaviour
 {
     
     private float timeToSpawn = 1f;
-    private float timeBetweenSpawns = 4f;
+    private float timeBetweenSpawns = 5f;
     private Color randomColor;
     private readonly int[] muliplicationNumbers = {4,6,8,9,10,12,14,15,18,20,
                                                   21,24,25,27,28,30,32,35,36,40,
